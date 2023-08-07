@@ -109,16 +109,16 @@ jobs:
           command: |
             sudo apt install -y tar gzip curl
       - k8s/install-kubectl
-      - aws-eks/update-kubeconfig:
+      - aws-eks/update-kubeconfig-with-authenticator:
           cluster-name: << parameters.cluster-name >>
           aws-region: << parameters.aws-region >>
           install-kubectl: true
-      - kubernetes/create-or-update-resource:
+      - k8s/create-or-update-resource:
           resource-file-path: ./k8s/deployment.yml
           resource-name: deployment/capstoneproject
           get-rollout-status: true
           show-kubectl-command: true
-      - kubernetes/create-or-update-resource:
+      - k8s/create-or-update-resource:
           resource-file-path: ./k8s/authentication.yml
           resource-name: configmap/aws-auth
       - run:
