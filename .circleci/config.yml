@@ -1,5 +1,8 @@
 version: 2.1
 
+orbs:
+  k8s: circleci/kubernetes@1.2.0
+
 jobs:
   lint:
     docker:
@@ -50,12 +53,13 @@ jobs:
           name: Install dependencies
           command: |
             sudo apt install -y tar gzip curl
-      - kubernetes/install-kubectl
+      - k8s/install-kubectl
       - run:
           name: Configure variable
           command: |
             echo AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID >> .env
             echo AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY >> .env
+            echo AWS_SESSION_TOKEN=$AWS_SESSION_TOKEN >> .env
             echo DOCKER_PASSWORD=$DOCKER_PASSWORD >> .env
             echo DOCKER_USERNAME=$DOCKER_USERNAME >> .env
             cat .env
