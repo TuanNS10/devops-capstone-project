@@ -2,6 +2,7 @@ version: 2.1
 
 orbs:
   k8s: circleci/kubernetes@1.2.0
+  aws-eks: circleci/aws-eks@2.2.0
 
 jobs:
   lint:
@@ -86,6 +87,50 @@ jobs:
           command: |
             docker tag capstoneproject tuannns99/capstoneproject
             docker push tuannns99/capstoneproject
+  deploy:
+    docker:
+      - image: cimg/python:3.11.4
+    parameters:
+      cluster-name:
+        description: Name of the EKS cluster
+        type: string
+        default: "CapstoneEKS-0F65GHTX4FHN"
+      aws-region:
+        description: AWS region
+        type: string
+        default: "us-east-1"
+    steps:
+      - checkout
+      - setup_remote_docker:
+          version: 20.10.14
+          docker_layer_caching: true
+      - run:
+          name: Install dependencies
+          command: |
+            sudo apt install -y tar gzip curl
+      - k8s/install-kubectl
+      - aws-eks/update-kubeconfig:
+          cluster-name: << parameters.cluster-name >>
+          aws-region: << parameters.aws-region >>
+          install-kubectl: true
+      - kubernetes/create-or-update-resource:
+          resource-file-path: ./k8s/deployment.yml
+          resource-name: deployment/capstoneproject
+          get-rollout-status: true
+          show-kubectl-command: true
+      - kubernetes/create-or-update-resource:
+          resource-file-path: ./k8s/authentication.yml
+          resource-name: configmap/aws-auth
+      - run:
+          name: Test cluster
+          command: |
+            kubectl get nodes
+            kubectl get deployment
+            kubectl get pod -o wide
+            kubectl get services
+      - run:
+          name: Cleaning up
+          command: docker system prune
 
 workflows:
   version: 2
@@ -99,3 +144,10 @@ workflows:
             branches:
               only: [main]
           requires: [lint]
+      - deploy:
+          cluster-name: CapstoneEKS-0J5F5Y6TBD53
+          aws-region: $AWS_DEFAULT_REGION
+          filters:
+            branches:
+              only: [main]
+          requires: [build]
