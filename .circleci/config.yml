@@ -40,7 +40,7 @@ jobs:
       cluster-name:
         description: Name of the EKS cluster
         type: string
-        default: "CapstoneEKS-0F65GHTX4FHN"
+        default: "CapstoneEKS-5Zn05CyYP3GG"
       aws-region:
         description: AWS region
         type: string
