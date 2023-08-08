@@ -144,10 +144,10 @@ workflows:
             branches:
               only: [main]
           requires: [lint]
-      # - deploy:
-      #     cluster-name: CapstoneEKS-Fw8L5ZZvyLwt
-      #     aws-region: $AWS_DEFAULT_REGION
-      #     filters:
-      #       branches:
-      #         only: [main]
-      #     requires: [build]
+      - deploy:
+          cluster-name: CapstoneEKS-Fw8L5ZZvyLwt
+          aws-region: $AWS_DEFAULT_REGION
+          filters:
+            branches:
+              only: [main]
+          requires: [build]
