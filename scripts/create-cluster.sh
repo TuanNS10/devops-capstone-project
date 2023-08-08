@@ -1,7 +1,7 @@
 #!/bin/bash
 
 eksctl create cluster \
---name CapstoneEKS-0F65GHTX4FHN \
+--name CapstoneEKS-5Zn05CyYP3GG \
 --version 1.25 \
 --region us-east-1a \
 --node-type t2.small \
@@ -11,4 +11,4 @@ eksctl create cluster \
 --managed \
 --profile udacity
 
-eksctl get cluster --name=CapstoneEKS-0F65GHTX4FHN
+# eksctl get cluster --name=CapstoneEKS-5Zn05CyYP3GG

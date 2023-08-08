@@ -105,7 +105,7 @@ Resources:
       Tags:
         - Key: Name
           Value: !Sub
-            - "${EksId}-CapstoneNodesGroup-Node"
+            - "${EksId}-CapstoneNodesGroup"
             - EksId:
                 Fn::ImportValue: !Sub "${EnvironmentName}-EKS"
           PropagateAtLaunch: "true"
