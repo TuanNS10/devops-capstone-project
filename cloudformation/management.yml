@@ -5,7 +5,7 @@ Parameters:
     Description: An Environment name that will be prefixed to resources
     Default: capstone-project
     Type: String
-  SSHKeyName:
+  KeyPairName:
     Description: SSH key for management access
     Default: capstone
     Type: String
@@ -32,7 +32,7 @@ Resources:
       InstanceType: t2.micro
       SecurityGroups:
         - Ref: InstanceSecurityGroup
-      KeyName: !Ref SSHKeyName
+      KeyName: !Ref KeyPairName
       ImageId: !Ref amiImageId
       Tags:
         - Key: Name
@@ -46,7 +46,7 @@ Resources:
       InstanceType: t2.micro
       SecurityGroups:
         - Ref: InstanceSecurityGroup
-      KeyName: !Ref SSHKeyName
+      KeyName: !Ref KeyPairName
       ImageId: !Ref amiImageId
       Tags:
         - Key: Name

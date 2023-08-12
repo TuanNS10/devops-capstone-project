@@ -4,7 +4,7 @@
     "ParameterValue": "capstone-project"
   },
   {
-    "ParameterKey": "SSHKeyName",
+    "ParameterKey": "KeyPairName",
     "ParameterValue": "capstone"
   },
   {
