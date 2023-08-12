@@ -20,7 +20,6 @@ Resources:
     Properties:
       VpcId:
         Fn::ImportValue: !Sub "${EnvironmentName}-VPC"
-      # GroupName: !Sub ${EnvironmentName}-management-SG
       GroupDescription: Allow port 22 for management
       SecurityGroupIngress:
         - IpProtocol: tcp
