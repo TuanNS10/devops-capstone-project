@@ -101,6 +101,7 @@ jobs:
               --stack-name "${ENVIRONMENT_NAME}-eks-management" \
               --region ${AWS_DEFAULT_REGION} \
               --parameter-overrides file://cloudformation/management-parameters.json \
+              --capabilities CAPABILITY_NAMED_IAM \
               --output text >> ~/deployed.txt
             cat ~/deployed.txt
       - run:
