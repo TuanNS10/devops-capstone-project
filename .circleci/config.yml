@@ -187,7 +187,6 @@ jobs:
       - run:
           name: Display the LoadBalancer's DNS name
           command: |
-            export ANSIBLE_HOST_KEY_CHECKING=False
             cat ~/inventory.txt
             cd ansible
             ansible-playbook -i ~/inventory.txt save-elb-dns.yml
