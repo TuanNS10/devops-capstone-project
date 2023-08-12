@@ -1,26 +1,22 @@
 [
-    {
-      "ParameterKey": "EnvironmentName",
-      "ParameterValue": "DevopsCapstoneProject"
-    },
-    {
-      "ParameterKey": "KeyPairName",
-      "ParameterValue": "capstone"
-    },
-    {
-      "ParameterKey": "DesiredInstances",
-      "ParameterValue": "3"
-    },
-    {
-      "ParameterKey": "ImageID",
-      "ParameterValue": "ami-0261755bbcb8c4a84"
-    },
-    {
-      "ParameterKey": "MinSize",
-      "ParameterValue": "1"
-    },
-    {
-      "ParameterKey": "MaxSize",
-      "ParameterValue": "4"
-    }
-  ]
+  {
+    "ParameterKey": "EnvironmentName",
+    "ParameterValue":"capstone-project"
+  },
+  {
+    "ParameterKey": "MinSize",
+    "ParameterValue": 2
+  },
+  {
+    "ParameterKey": "MaxSize",
+    "ParameterValue": 6
+  },
+  {
+    "ParameterKey": "DesiredSize",
+    "ParameterValue": 4
+  },
+  {
+    "ParameterKey": "KeyPairName",
+    "ParameterValue":"capstone"
+  }
+]

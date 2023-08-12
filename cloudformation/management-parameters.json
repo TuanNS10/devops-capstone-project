@@ -1,0 +1,14 @@
+[
+  {
+    "ParameterKey": "EnvironmentName",
+    "ParameterValue": "capstone-project"
+  },
+  {
+    "ParameterKey": "SSHKeyName",
+    "ParameterValue": "capstone"
+  },
+  {
+    "ParameterKey": "amiImageId",
+    "ParameterValue": "ami-053b0d53c279acc90"
+  }
+]
