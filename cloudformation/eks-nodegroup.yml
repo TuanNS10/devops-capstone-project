@@ -8,17 +8,17 @@ Parameters:
   MinSize:
     Description: Minimum number of web application servers
     Default: 2
-    Type: String
+    Type: Number
 
   MaxSize:
     Description: Maximum number of web application servers
     Default: 6
-    Type: String
+    Type: Number
 
   DesiredSize:
     Description: How many instances should be created.
     Default: 4
-    Type: String
+    Type: Number
 
   KeyPairName:
     Description: The EC2 Key Pair to allow SSH access to the instances

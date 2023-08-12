@@ -5,15 +5,15 @@
   },
   {
     "ParameterKey": "MinSize",
-    "ParameterValue": 2
+    "ParameterValue": "2"
   },
   {
     "ParameterKey": "MaxSize",
-    "ParameterValue": 6
+    "ParameterValue": "6"
   },
   {
     "ParameterKey": "DesiredSize",
-    "ParameterValue": 4
+    "ParameterValue": "4"
   },
   {
     "ParameterKey": "KeyPairName",
