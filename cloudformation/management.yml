@@ -18,8 +18,7 @@ Resources:
   InstanceSecurityGroup:
     Type: AWS::EC2::SecurityGroup
     Properties:
-      VpcId:
-        Fn::ImportValue: !Sub "${EnvironmentName}-VPC"
+      VpcId: capstone-project-VPC
       GroupDescription: Allow port 22 for management
       SecurityGroupIngress:
         - IpProtocol: tcp
@@ -32,7 +31,7 @@ Resources:
     Properties:
       InstanceType: t2.micro
       SecurityGroups:
-        - !Ref: InstanceSecurityGroup
+        - Ref: InstanceSecurityGroup
       KeyName: !Ref KeyPairName
       ImageId: !Ref amiImageId
       Tags:
@@ -46,7 +45,7 @@ Resources:
     Properties:
       InstanceType: t2.micro
       SecurityGroups:
-        - !Ref: InstanceSecurityGroup
+        - Ref: InstanceSecurityGroup
       KeyName: !Ref KeyPairName
       ImageId: !Ref amiImageId
       Tags:
