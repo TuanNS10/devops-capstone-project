@@ -18,8 +18,7 @@ Resources:
   InstanceSecurityGroup:
     Type: AWS::EC2::SecurityGroup
     Properties:
-      VpcId:
-        Fn::ImportValue: !Sub "${EnvironmentName}-VPC"
+      GroupName: !Sub ${EnvironmentName}-management-SG
       GroupDescription: Allow port 22 for management
       SecurityGroupIngress:
         - IpProtocol: tcp
