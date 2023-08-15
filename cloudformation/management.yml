@@ -19,6 +19,8 @@ Resources:
     Type: AWS::EC2::SecurityGroup
     Properties:
       GroupDescription: Security group for the nodes
+      VpcId:
+        Fn::ImportValue: !Sub "${EnvironmentName}-VPC"
       GroupName: !Sub ${EnvironmentName}-SCG  
       SecurityGroupIngress:
         - IpProtocol: tcp
