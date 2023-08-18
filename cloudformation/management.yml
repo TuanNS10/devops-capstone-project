@@ -18,10 +18,10 @@ Resources:
   InstanceSecurityGroup:
     Type: AWS::EC2::SecurityGroup
     Properties:
-      # GroupName: !Sub ${EnvironmentName}-management-SG
+      GroupName: !Sub ${EnvironmentName}-management-SG
       GroupDescription: Security group for the nodes 
-      VpcId:
-        Fn::ImportValue: !Sub "${EnvironmentName}-VPC" 
+      # VpcId:
+      #   Fn::ImportValue: !Sub "${EnvironmentName}-VPC" 
       SecurityGroupIngress:
         - IpProtocol: tcp
           FromPort: 0
