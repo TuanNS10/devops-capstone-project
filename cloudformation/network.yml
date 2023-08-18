@@ -172,18 +172,23 @@ Resources:
       GroupDescription: Default security group for EKS.
       SecurityGroupIngress:
         - IpProtocol: tcp
-          FromPort: 1025
-          ToPort: 65535
+          FromPort: 80
+          ToPort: 80
           CidrIp: 0.0.0.0/0
-        - IpProtocol: tcp
-          FromPort: 443
-          ToPort: 443
-          CidrIp: 0.0.0.0/0
-      SecurityGroupEgress:
-        - IpProtocol: tcp
-          FromPort: 1025
-          ToPort: 65535
-          CidrIp: 0.0.0.0/0
+      # SecurityGroupIngress:
+      #   - IpProtocol: tcp
+      #     FromPort: 1025
+      #     ToPort: 65535
+      #     CidrIp: 0.0.0.0/0
+      #   - IpProtocol: tcp
+      #     FromPort: 443
+      #     ToPort: 443
+      #     CidrIp: 0.0.0.0/0
+      # SecurityGroupEgress:
+      #   - IpProtocol: tcp
+      #     FromPort: 1025
+      #     ToPort: 65535
+      #     CidrIp: 0.0.0.0/0
 
   LoadBalancerSecurityGroup:
     Type: AWS::EC2::SecurityGroup

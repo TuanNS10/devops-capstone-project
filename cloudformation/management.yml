@@ -19,22 +19,28 @@ Resources:
     Type: AWS::EC2::SecurityGroup
     Properties:
       GroupName: !Sub ${EnvironmentName}-management-SG
-      GroupDescription: Security group for the nodes 
-      # VpcId:
-      #   Fn::ImportValue: !Sub "${EnvironmentName}-VPC" 
+      # GroupDescription: Security group for the nodes 
+      GroupDescription: Allow port 22 for management
       SecurityGroupIngress:
         - IpProtocol: tcp
-          FromPort: 0
-          ToPort: 65535
+          FromPort: 22
+          ToPort: 22
           CidrIp: 0.0.0.0/0
-        - IpProtocol: tcp
-          FromPort: 1025
-          ToPort: 65535
-          CidrIp: 0.0.0.0/0
-        - IpProtocol: tcp
-          FromPort: 443
-          ToPort: 443
-          CidrIp: 0.0.0.0/0
+      # VpcId:
+      #   Fn::ImportValue: !Sub "${EnvironmentName}-VPC" 
+      # SecurityGroupIngress:
+      #   - IpProtocol: tcp
+      #     FromPort: 0
+      #     ToPort: 65535
+      #     CidrIp: 0.0.0.0/0
+      #   - IpProtocol: tcp
+      #     FromPort: 1025
+      #     ToPort: 65535
+      #     CidrIp: 0.0.0.0/0
+      #   - IpProtocol: tcp
+      #     FromPort: 443
+      #     ToPort: 443
+      #     CidrIp: 0.0.0.0/0
       # SecurityGroupEgress:
       #   - IpProtocol: tcp
       #     FromPort: 0
