@@ -1,4 +1,23 @@
----
+# ---
+# - name: "Save LoadBalancer's DNS name locally"
+#   hosts: management[0]
+#   user: ubuntu
+#   gather_facts: false
+#   become: yes
+#   vars:
+#     ENVIRONMENT_NAME: "{{ lookup('env', 'ENVIRONMENT_NAME') }}"
+#   tasks:
+#     - name: Get the LoadBalancer's DNS name
+#       shell: "./bin/kubectl get svc {{ ENVIRONMENT_NAME }}-service"
+#       register: elb_dns
+#       args:
+#         chdir: $HOME
+
+#     - name: Copy the output to a local file
+#       copy:
+#         content: "{{ elb_dns.stdout }}"
+#         dest: "~/elb_dns.txt"
+#       delegate_to: localhost
 - name: "Save LoadBalancer's DNS name locally"
   hosts: management[0]
   user: ubuntu
@@ -7,11 +26,21 @@
   vars:
     ENVIRONMENT_NAME: "{{ lookup('env', 'ENVIRONMENT_NAME') }}"
   tasks:
+    - name: Download kubectl
+      shell: curl -LO "https://dl.k8s.io/release/v1.23.0/bin/linux/amd64/kubectl"
+      args:
+        chdir: "{{ ansible_env.HOME }}"
+      environment:
+        HOME: "{{ ansible_env.HOME }}"
+
+    - name: Apply execute permissions to kubectl
+      shell: chmod +x "{{ ansible_env.HOME }}/kubectl"
+
     - name: Get the LoadBalancer's DNS name
-      shell: "./bin/kubectl get svc {{ ENVIRONMENT_NAME }}-service"
+      shell: "{{ ansible_env.HOME }}/kubectl get svc {{ ENVIRONMENT_NAME }}-service"
       register: elb_dns
       args:
-        chdir: $HOME
+        chdir: "{{ ansible_env.HOME }}"
 
     - name: Copy the output to a local file
       copy:
