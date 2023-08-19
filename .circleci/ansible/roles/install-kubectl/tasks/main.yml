@@ -1,6 +1,6 @@
 ---
 - name: "Download kubectl"
-  shell: curl -LO "https://dl.k8s.io/release/v1.23.0/bin/linux/amd64/kubectl"
+  shell: curl -o kubectl "https://dl.k8s.io/release/v1.23.0/bin/linux/amd64/kubectl"
   args:
     chdir: $HOME
 
