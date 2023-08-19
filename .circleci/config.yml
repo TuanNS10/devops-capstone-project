@@ -193,10 +193,10 @@ jobs:
       #       ansible-playbook -i ~/inventory.txt save-elb-dns.yml
       #       cat ~/elb_dns.txt
             
-      - persist_to_workspace:
-          root: ~/
-          paths:
-            - elb_dns.txt
+      # - persist_to_workspace:
+      #     root: ~/
+      #     paths:
+      #       - elb_dns.txt
 
   deploy-docker:
     docker:
