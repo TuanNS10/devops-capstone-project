@@ -52,7 +52,7 @@ Resources:
           - Effect: Allow
             Principal:
               Service:
-                - ec2.amazonaws.com
+                - !FindInMap [ServicePrincipals, !Ref "AWS::Partition", ec2]
             Action:
               - "sts:AssumeRole"
       ManagedPolicyArns:
