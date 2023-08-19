@@ -35,12 +35,12 @@ Mappings:
       ec2: ec2.amazonaws.com
 
 Resources:
-  # InstanceProfile:
-  #   Type: AWS::IAM::InstanceProfile
-  #   Properties:
-  #     Path: "/"
-  #     Roles:
-  #       - !Ref NodeInstanceRole
+  InstanceProfile:
+    Type: AWS::IAM::InstanceProfile
+    Properties:
+      Path: "/"
+      Roles:
+        - !Ref NodeInstanceRole
 
   NodeInstanceRole:
     Type: "AWS::IAM::Role"
