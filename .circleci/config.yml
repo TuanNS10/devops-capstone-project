@@ -122,7 +122,7 @@ jobs:
 
   configure-infrastructure:
     docker:
-      - image: python:3.7-alpine3.11
+      - image: python:3.11-rc-alpine
     steps:
       - checkout
       - add_ssh_keys:
@@ -133,7 +133,7 @@ jobs:
       - run:
           name: Install dependencies
           command: |
-            apk add --update ansible
+            apk add --update ansible openssh
       - run:
           name: Configure server
           command: |
@@ -149,7 +149,7 @@ jobs:
 
   configure-cluster:
     docker:
-      - image: python:3.7-alpine3.11
+      - image: python:3.11-rc-alpine
     steps:
       - checkout
       - add_ssh_keys:
@@ -160,7 +160,7 @@ jobs:
       - run:
           name: Install dependencies
           command: |
-            apk add --update ansible
+            apk add --update ansible openssh
       - run:
           name: Configure server
           command: |
@@ -185,22 +185,22 @@ jobs:
                 echo "Wait 60 seconds..."
                 sleep 60
               fi
-      # - run:
-      #     name: Display the LoadBalancer's DNS name
-      #     command: |
-      #       cat ~/inventory.txt
-      #       cd .circleci/ansible
-      #       ansible-playbook -i ~/inventory.txt save-elb-dns.yml
-      #       cat ~/elb_dns.txt
+      - run:
+          name: Display the LoadBalancer's DNS name
+          command: |
+            cat ~/inventory.txt
+            cd .circleci/ansible
+            ansible-playbook -i ~/inventory.txt save-elb-dns.yml
+            cat ~/elb_dns.txt
             
-      # - persist_to_workspace:
-      #     root: ~/
-      #     paths:
-      #       - elb_dns.txt
+      - persist_to_workspace:
+          root: ~/
+          paths:
+            - elb_dns.txt
 
   deploy-docker:
     docker:
-      - image: python:3.7-alpine3.11
+      - image: python:3.11-rc-alpine
     steps:
       - checkout
       - add_ssh_keys:
@@ -211,7 +211,7 @@ jobs:
       - run:
           name: Install dependencies
           command: |
-            apk add --update ansible
+            apk add --update ansible openssh
       - run:
           name: Deploy newest Docker Image
           command: |
