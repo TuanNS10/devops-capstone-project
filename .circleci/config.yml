@@ -43,7 +43,7 @@ jobs:
       - run:
           name: Build docker container
           command: |
-            docker build --tag=$DOCKER_IMAGE_NAME:${CIRCLE_WORKFLOW_ID:0:8} .
+            docker build --tag=$DOCKER_IMAGE_NAME .
             docker image ls
 
       - run:
