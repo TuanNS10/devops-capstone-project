@@ -43,7 +43,7 @@ jobs:
       - run:
           name: Build docker container
           command: |
-            docker build --tag=$DOCKER_IMAGE_NAME .
+            docker build --tag=$DOCKER_IMAGE_NAME:${CIRCLE_WORKFLOW_ID:0:8} .
             docker image ls
 
       - run:
@@ -144,7 +144,7 @@ jobs:
               else
                 cat ~/inventory.txt
                 cd .circleci/ansible
-                ansible-playbook -i ~/inventory.txt configure-server.yml
+                ansible-playbook -i ~/inventory.txt configure-server.yml -vvv
               fi
 
   configure-cluster:
@@ -171,7 +171,7 @@ jobs:
               else
                 cat ~/inventory.txt
                 cd .circleci/ansible
-                ansible-playbook -i ~/inventory.txt configure-cluster.yml
+                ansible-playbook -i ~/inventory.txt configure-cluster.yml -vvv
               fi
       - run:
           name: Wait for LoadBalancer's domain to become reachable
@@ -190,7 +190,7 @@ jobs:
           command: |
             cat ~/inventory.txt
             cd .circleci/ansible
-            ansible-playbook -i ~/inventory.txt save-elb-dns.yml
+            ansible-playbook -i ~/inventory.txt save-elb-dns.yml -vvv
             cat ~/elb_dns.txt
             
       - persist_to_workspace:
