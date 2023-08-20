@@ -1,3 +1,5 @@
+[![ecovate](https://circleci.com/gh/TuanNS10/devops-capstone-project.svg?style=svg)](https://app.circleci.com/pipelines/github/TuanNS10/devops-capstone-project) CircleCI status badge
+
 # Cloud DevOps Engineer Capstone Project
 
 This project represents the successful completion of the last final Capstone project and the Cloud DevOps Engineer Nanodegree at Udacity.

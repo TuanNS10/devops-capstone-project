@@ -27,7 +27,7 @@
     #     chdir: $HOME    
 
     - name: Get the LoadBalancer's DNS name
-      shell: "./bin/kubectl get svc service"
+      shell: "./bin/kubectl get svc {{ ENVIRONMENT_NAME }}-service"
       register: elb_dns
       args:
         chdir: $HOME
