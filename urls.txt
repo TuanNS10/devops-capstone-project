@@ -1,0 +1,2 @@
+Github: https://github.com/TuanNS10/devops-capstone-project
+Public LB DNS: http://a3d9f4f317497407ea87cc5ec21425b2-394710930.us-east-1.elb.amazonaws.com/
